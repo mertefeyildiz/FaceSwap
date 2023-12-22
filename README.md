@@ -9,10 +9,10 @@ Bu fonksiyon, bir görüntüden yüz tespiti yaparak tespit edilen yüzün 68 ad
 
 İşte bu fonksiyonun adım adım açıklaması:
 
-DETECTOR ve PREDICTOR İlk Ayarlar:
+
 
 <details>
-<summary>DETECTOR</summary>
+<summary>def get_landmarks</summary>
 
 ```python
 rects = DETECTOR(im, 1)
