@@ -211,7 +211,9 @@ def correct_colours(warped_face_im, body_im, face_scale):
 
 ```
 </details>
+
 # GAN  model kullanılsaydı nasıl çalışırdı?
+<br>
 ![gan](https://github.com/mertefeyildiz/FaceSwap/assets/67926547/9aee133c-6a41-4b7f-b357-8dbf74dd2218)
 
 Jeneratör (Generator):
