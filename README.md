@@ -1,5 +1,5 @@
 # FaceSwap
-*get_landmarks fonksiyonu*
+
 <br>
 <br>
 ![face_swap diagram](https://github.com/mertefeyildiz/FaceSwap/assets/67926547/3400373f-a24a-4dbe-9c4c-73f22273fa93)
