@@ -3,11 +3,12 @@
 <br>
 <br>
 
+![face_swap diagram](https://github.com/mertefeyildiz/FaceSwap/assets/67926547/7576273d-3e6f-4c76-85a8-196b2a31c08c)
 
 
 <br>
 
-![face_swap diagram (5)](https://github.com/mertefeyildiz/FaceSwap/assets/67926547/7c6b07a7-5150-4d43-afdd-a38eadb86db7)
+
 
 
 # 1-Yüz Landmark Tespiti (get_landmarks):
@@ -214,8 +215,11 @@ def correct_colours(warped_face_im, body_im, face_scale):
 </details>
 
 # GAN  model kullanılsaydı nasıl çalışırdı?
+
 <br>
-![gan](https://github.com/mertefeyildiz/FaceSwap/assets/67926547/9aee133c-6a41-4b7f-b357-8dbf74dd2218)
+
+![face_swap diagram (5)](https://github.com/mertefeyildiz/FaceSwap/assets/67926547/7c6b07a7-5150-4d43-afdd-a38eadb86db7)
+
 
 Jeneratör (Generator):
 
