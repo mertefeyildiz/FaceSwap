@@ -9,26 +9,26 @@
 
 ![face_swap diagram](https://github.com/mertefeyildiz/FaceSwap/assets/67926547/26a83351-2d7b-46a5-b468-b3b65b018df5)
 
-Yüz Landmark Tespiti (get_landmarks):
+# 1-Yüz Landmark Tespiti (get_landmarks):
 
 Dlib kütüphanesinin yüz tespit (DETECTOR) ve yüz landmark çıkarma (PREDICTOR) modelleri kullanılarak bir görüntüdeki yüz tespit edilir.
 Eğer tespit edilen yüz sayısı 1'den fazla veya hiç yoksa hata mesajı verilir.
 Yüzdeki önemli noktaların (landmark) koordinatları hesaplanır ve bir Numpy dizisi olarak döndürülür.
 
-Affine Dönüşüm Matrisi Oluşturma (transformation_from_points):
+# 2-Affine Dönüşüm Matrisi Oluşturma (transformation_from_points):
 
 İki farklı nokta kümesi arasındaki en iyi uyumu sağlayan bir affine dönüşüm matrisi hesaplanır. Bu, Procrustes problemini çözerek yapılır.
 İlk olarak, noktaların merkezi alınır, standart sapmaları normalize edilir ve ardından SVD (Tekil Değer Ayrışımı) kullanılarak dönüşüm matrisi elde edilir.
 Böylece iki özellik noktalarının üst üste gelmesi sağlanır.
 
-Maske Oluşturma (create_mask):
+# 3-Maske Oluşturma (create_mask):
 
 Yüzün göz, burun, ağız bölgelerini temsil eden gruplar tanımlanır.
 Bu gruplara ait bölgeler, vücut üzerinde convex hull kullanılarak bir maske oluşturulur.
 Oluşturulan maske, belirli bir ölçüde genişletilir (dilate) ve ardından bir Gauss bulanıklığı uygulanarak yumuşatılır (blur).
 Maske oluşturulduktan sonra dilate ve blur işlemleri, maskeyi daha iyi ayarlamak, konturları yumuşatmak ve genel olarak daha doğru bir hale getirmek amacıyla yapılır. 
 
-Renk Düzeltme (correct_colours):
+# 4-Renk Düzeltme (correct_colours):
 
 Yüz ve vücut görüntülerine belirli bir bulanıklık uygulanarak yumuşatılır.
 Yumuşatılmış vücut görüntüsü ile orijinal yüz görüntüsü toplanır, aynı zamanda orijinal yüz görüntüsünden yumuşatılmış yüz görüntüsü çıkarılır. Bu işlem, renk uyumunu artırmaya yardımcı olur.
