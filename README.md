@@ -2,6 +2,7 @@
 
 <br>
 <br>
+![face_swap diagram](https://github.com/mertefeyildiz/FaceSwap/assets/67926547/b33ca2cc-c679-4452-a752-adf3c1a0ee3d)
 
 
 <br>
