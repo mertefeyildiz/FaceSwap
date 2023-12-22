@@ -11,9 +11,6 @@ Bu fonksiyon, bir görüntüden yüz tespiti yaparak tespit edilen yüzün 68 ad
 
 DETECTOR ve PREDICTOR İlk Ayarlar:
 
-python
-Copy code
-
 <details>
 <summary>get_landmarks Fonksiyonu</summary>
 
@@ -22,7 +19,7 @@ rects = DETECTOR(im, 1)
 def get_landmarks(im):
     # ...
     return landmarks
-
+```
 
 
 rects = DETECTOR(im, 1)
