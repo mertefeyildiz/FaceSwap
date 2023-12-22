@@ -102,3 +102,54 @@ Sonuç:
 
 Oluşturulan affine dönüşüm matrisi, [s * R | T] formülüne uyan bir matristir ve bu matris fonksiyon tarafından döndürülür.
 Bu adımlar, iki nokta kümesi arasındaki en iyi uyumu sağlayan bir affine dönüşüm matrisini oluşturmak için kullanılır.
+
+<details>
+<summary>def create_mask</summary>
+    
+```python
+def create_mask(points, shape, face_scale):
+    # Landmark gruplarını tanımla
+    groups = [
+        [17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47],
+        [27, 28, 29, 30, 31, 32, 33, 34, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60]
+    ]
+
+    # Boş bir maske dizisi oluştur
+    mask_im = numpy.zeros(shape, dtype=numpy.float64)
+
+    # Her bir landmark grubu için işlem yap
+    for group in groups:
+        # Grup içindeki landmark noktalarının konumlarını al
+        landmarks = [points[idx] for idx in group]
+
+        # Convex hull kullanarak landmark noktalarını saran çokgeni oluştur
+        hull = cv2.convexHull(numpy.array(landmarks))
+
+        # Convex hull içini doldurarak maskeyi oluştur
+        cv2.fillConvexPoly(mask_im, hull, color=(1, 1, 1))
+
+    # Yüz maskesini yumuşatmak için bir 'feather' uygula
+    feather_amount = int(0.2 * face_scale * 0.5) * 2 + 1
+    kernel_size = (feather_amount, feather_amount)
+
+    # Maskeyi genişlet (dilate) ve ardından bir Gauss filtresi uygula (blur)
+    mask_im = (cv2.GaussianBlur(mask_im, kernel_size, 0) > 0) * 1.0
+
+    return mask_im
+```
+Adım 1: Landmark gruplarını tanımla. Bu gruplar, yüzün belirli bölgelerini temsil eden landmark noktalarını içerir.
+
+Adım 2: Boş bir maske dizisi oluştur. Bu dizide, son maskeyi saklayacağız.
+
+Adım 3: Her bir landmark grubu için işlem yap. Bu, yüzün farklı bölgelerini kapsayan farklı maskeleri oluşturmak anlamına gelir.
+
+Adım 4: Her bir grup içindeki landmark noktalarını al. Bu, her bir landmark grubunu oluşturan noktaların konumlarını içerir.
+
+Adım 5: Convex hull kullanarak landmark noktalarını saran çokgeni oluştur. Bu, landmark noktalarının en dış noktalarını birleştiren bir çizgidir.
+
+Adım 6: Convex hull içini doldurarak maskeyi oluştur. Bu, convex hull içinde kalan bölgeyi beyaz renk ile doldurarak maskeyi oluşturur.
+
+Adım 7: Yüz maskesini yumuşatmak için bir 'feather' uygula. Bu, maskeyi genişletmek ve daha yumuşak bir geçiş elde etmek için bir işlemdir.
+
+Adım 8: Maskeyi genişlet (dilate) ve ardından bir Gauss filtresi uygula (blur). Bu, maskeyi daha da yumuşatır ve son maskeyi elde ederiz.
+
