@@ -7,7 +7,7 @@
 <br>
 Bu fonksiyon, bir görüntüden yüz tespiti yaparak tespit edilen yüzün 68 adet landmark (önemli nokta) koordinatlarını döndürmektedir. Bu işlem, Dlib kütüphanesinin yüz tespit ve landmark çıkarma yeteneklerini kullanır.
 
-İşte bu fonksiyonun adım adım açıklaması:
+Bu fonksiyonun adım adım açıklaması:
 
 
 
@@ -39,3 +39,65 @@ PREDICTOR(im, rects[0]) komutu, tespit edilen ilk yüz üzerinde landmark çıka
 p.x ve p.y, her bir landmark noktasının x ve y koordinatlarını temsil eder.
 Bu koordinatlar, bir Numpy dizisi içinde saklanarak fonksiyon tarafından döndürülür.
 Bu fonksiyon, bir görüntüde yüz tespiti yapar ve tespit edilen yüzün landmark koordinatlarını içeren bir Numpy dizisi döndürür. Bu landmark noktaları, yüzün çeşitli bölgelerini (gözler, burun, ağız, vb.) temsil eder ve genellikle yüzün şeklini ve özelliklerini yakalamak için kullanılır.
+
+
+
+
+<details>
+<summary>def transformation_from_points</summary>
+    
+Bu fonksiyon, Procrustes problemini çözmek için kullanılır ve iki nokta kümesi arasındaki en iyi uyumu bulur. Fonksiyon açıklaması:
+
+Parametreler:
+
+points1: İlk nokta kümesi. Buradaki noktalar, dönüşümü almak istediğimiz orijinal noktalardır.
+points2: İkinci nokta kümesi. Bu noktalar, orijinal noktaların yerine geçecek olan noktalardır.
+Veri Tipi Dönüşümleri:
+
+points1 ve points2 Numpy dizilerine dönüştürülür. Bu, daha sonra kullanılacak matematiksel işlemleri gerçekleştirmek için gerekli olan veri tipini sağlar.
+```python
+    points1 = points1.astype(numpy.float64)
+    points2 = points2.astype(numpy.float64)
+```
+Merkezleme:
+
+c1 ve c2, her bir nokta kümesinin merkezini temsil eden vektörlerdir. Bu merkez vektörleri, noktaların etrafında dönmek ve ölçeklendirmek için kullanılacaktır.
+Her iki nokta kümesi de kendi merkezinden çıkartılır, böylece her iki küme de orijin etrafında hizalanır.
+```python
+    c1 = numpy.mean(points1, axis=0)
+    c2 = numpy.mean(points2, axis=0)
+    points1 -= c1
+    points2 -= c2
+```
+Ölçeklendirme:
+
+s1 ve s2, her bir nokta kümesinin standart sapmasını temsil eden ölçek faktörleridir.
+Her iki küme, kendi standart sapmasına bölünerek normalize edilir.
+```python
+    s1 = numpy.std(points1)
+    s2 = numpy.std(points2)
+    points1 /= s1
+    points2 /= s2
+```
+SVD (Singular Value Decomposition):
+
+Singular Value Decomposition (Tekil Değer Ayrışımı) işlemi gerçekleştirilir. Bu işlem, matris çarpanlarına ayrıştırma işlemidir.
+U, S, ve Vt, SVD işleminden elde edilen bileşenlerdir.
+```python
+    U, S, Vt = numpy.linalg.svd(points1.T @ points2) # @ --> *
+```
+
+Döndürme Matrisi (R) Bulma:
+```python
+    R = (U @ Vt).T # @ --> * 
+```
+R, döndürme matrisidir ve SVD bileşenleri kullanılarak hesaplanır.
+İki matris çarpımından elde edilen çözüm aslında U * Vt matrisidir. Ancak, bu çözümün transpozu (T) alınmalıdır.
+Affine Dönüşüm Matrisini Oluşturma:
+
+numpy.hstack kullanılarak R matrisi ve translasyon vektörü birleştirilir ve sonuç olarak affine dönüşüm matrisi elde edilir.
+Translasyon vektörü, (c2.T - (s2 / s1) * R @ c1.T)[:,None] ifadesi ile hesaplanır.
+Sonuç:
+
+Oluşturulan affine dönüşüm matrisi, [s * R | T] formülüne uyan bir matristir ve bu matris fonksiyon tarafından döndürülür.
+Bu adımlar, iki nokta kümesi arasındaki en iyi uyumu sağlayan bir affine dönüşüm matrisini oluşturmak için kullanılır.
