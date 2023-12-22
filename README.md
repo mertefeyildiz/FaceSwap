@@ -210,7 +210,7 @@ def correct_colours(warped_face_im, body_im, face_scale):
     return numpy.clip(0. + body_im_blur + warped_face_im - face_im_blur, 0, 255)
 
 ```
-
+</details>
 # GAN  model kullanılsaydı nasıl çalışırdı?
 ![gan](https://github.com/mertefeyildiz/FaceSwap/assets/67926547/9aee133c-6a41-4b7f-b357-8dbf74dd2218)
 
