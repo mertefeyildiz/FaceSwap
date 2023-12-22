@@ -9,7 +9,7 @@ Bu fonksiyon, bir görüntüden yüz tespiti yaparak tespit edilen yüzün 68 ad
 
 Bu fonksiyonun adım adım açıklaması:
 
-...
+
 
 <details>
 <summary>def get_landmarks</summary>
@@ -41,7 +41,8 @@ Bu koordinatlar, bir Numpy dizisi içinde saklanarak fonksiyon tarafından dönd
 Bu fonksiyon, bir görüntüde yüz tespiti yapar ve tespit edilen yüzün landmark koordinatlarını içeren bir Numpy dizisi döndürür. Bu landmark noktaları, yüzün çeşitli bölgelerini (gözler, burun, ağız, vb.) temsil eder ve genellikle yüzün şeklini ve özelliklerini yakalamak için kullanılır.
 
 
-...
+
+</details>
 
 <details>
 <summary>def transformation_from_points</summary>
