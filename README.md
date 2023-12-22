@@ -151,5 +151,28 @@ def create_mask(points, shape, face_scale):
     mask_im = (cv2.GaussianBlur(mask_im, kernel_size, 0) > 0) * 1.0
 
     return mask_im
-```
 
+```
+</details>
+<details>
+<summary>def correct_colours</summary>
+Adım 1: Bulanıklık miktarını hesapla. Bu miktar, belirli bir oranla yüz ölçeği (face_scale) ile çarpılır ve en yakın tek sayıya yuvarlanır.
+
+Adım 2: Bulanıklık miktarına göre bir Gauss filtresi çekirdeği oluştur. Bu çekirdek, daha sonra görüntüleri yumuşatmak için kullanılacaktır.
+
+Adım 3: Yüz ve vücut görüntülerini belirtilen bulanıklık miktarıyla yumuşat. Bu işlem, görüntülerdeki küçük detayları azaltarak renk uyumunu artırır.
+
+Adım 4: Renk düzeltme işlemi. Yumuşatılmış vücut görüntüsü ile orijinal yüz görüntüsünü topla, aynı zamanda orijinal yüz görüntüsünden yumuşatılmış yüz görüntüsünü çıkar. Bu işlem, yüz ve vücut renklerini uyumlu hale getirmeye yardımcı olur.
+
+Adım 5: Sonucu 0 ile 255 arasındaki değerlerle sınırla. Bu, görüntü piksellerinin geçerli değer aralığını korumak için yapılır.
+```python
+def correct_colours(warped_face_im, body_im, face_scale):
+    blur_amount = int(3 * 0.5 * face_scale) * 2 + 1
+    kernel_size = (blur_amount, blur_amount)
+
+    face_im_blur = cv2.GaussianBlur(warped_face_im, kernel_size, 0)
+    body_im_blur = cv2.GaussianBlur(body_im, kernel_size, 0)
+
+    return numpy.clip(0. + body_im_blur + warped_face_im - face_im_blur, 0, 255)
+
+```
