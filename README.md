@@ -225,22 +225,27 @@ Jeneratör (Generator):
 
 Face swapping için jeneratör, bir yüzü diğerine dönüştürmekle görevlidir. Genellikle, jeneratörün girişi, değiştirilmek istenen yüzün landmark noktalarını içeren bir vektördür. Bu vektör, encoder tarafından üretilir.
 Jeneratör, bu giriş vektörünü kullanarak bir dizi ters evrişim katmanı ile yüz özelliklerini başka bir yüzde nasıl ifade edeceğini öğrenir.<br>
+
 Diskriminator (Discriminator):
 
 Diskriminator, orijinal yüz ve swap edilmiş yüz arasındaki farkı öğrenmeye çalışır. Yani, gerçek bir yüz ve sahte (swap edilmiş) bir yüz arasındaki ayırt edici özellikleri öğrenir.
 Diskriminator, bu öğrenmeleri kullanarak, eğitildiği veri setinde doğru bir ayrım yapabilme yeteneği kazanır.<br>
+
 Encoder (Landmark Detection ve Feature Extraction):
 
 Encoder, yüzleri temsil eden landmark noktalarını ve belki de yüz özelliklerini düşük boyutlu bir latent uzaya dönüştürür. Bu, yüzleri temsil eden daha anlamlı ve öğrenilebilir bir gösterim elde etmek için kullanılır.
 Encoder ayrıca, diğer yüzün landmark noktalarını bu latent uzaya dönüştürür.<br>
+
 Decoder (Swap Edilmiş Yüzün Oluşturulması):
 
 Decoder, encoder tarafından elde edilen latent uzaydaki temsil ve swap edilecek yüzün landmark noktalarını kullanarak, orijinal yüzden diğerine geçişi sağlayan bir görüntü oluşturur.
 Decoder, jeneratörün işleyebileceği bir forma dönüştürülmüş swap edilmiş yüzü üretir.<br>
+
 Eğitim:
 
 Eğitim sırasında, jeneratör ve diskriminator birbirleriyle rekabet ederler. Jeneratör, diskriminatörü kandırmaya ve swap edilmiş yüzü gerçekmiş gibi göstermeye çalışırken, diskriminator gerçek ile sahte arasındaki farkı belirleme görevini yerine getirir.
 Encoder ve decoder da, latent uzayda daha anlamlı temsiller oluşturmak için eğitilir.<br>
+
 Sonuç:
 
 Eğitim tamamlandığında, jeneratör ve diskriminator, yüzleri başarılı bir şekilde swap etmek için işbirliği yapabilirler. Swap edilmiş yüz, orijinal yüze benzer bir şekilde oluşturulur ve eğitim verisinde gördükleri yüzlerden öğrendikleri özellikleri kullanarak gerçekçi bir sonuç elde edilir.
