@@ -2,11 +2,12 @@
 
 <br>
 <br>
-![face_swap diagram](https://github.com/mertefeyildiz/FaceSwap/assets/67926547/b33ca2cc-c679-4452-a752-adf3c1a0ee3d)
+
 
 
 <br>
 
+![face_swap diagram](https://github.com/mertefeyildiz/FaceSwap/assets/67926547/26a83351-2d7b-46a5-b468-b3b65b018df5)
 
 
 
