@@ -1,4 +1,4 @@
-# FaceSwap
+# FaceSwap Algoritması
 
 <br>
 <br>
