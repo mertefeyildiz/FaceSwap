@@ -7,7 +7,8 @@
 
 <br>
 
-![face_swap diagram](https://github.com/mertefeyildiz/FaceSwap/assets/67926547/26a83351-2d7b-46a5-b468-b3b65b018df5)
+![face_swap diagram (5)](https://github.com/mertefeyildiz/FaceSwap/assets/67926547/7c6b07a7-5150-4d43-afdd-a38eadb86db7)
+
 
 # 1-Yüz Landmark Tespiti (get_landmarks):
 
