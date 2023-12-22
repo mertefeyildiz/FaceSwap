@@ -105,7 +105,22 @@ Bu adımlar, iki nokta kümesi arasındaki en iyi uyumu sağlayan bir affine dö
 </details>
 <details>
 <summary>def create_mask</summary>
-    
+Adım 1: Landmark gruplarını tanımla. Bu gruplar, yüzün göz, burun, ağız bölgelerini temsil eden landmark noktalarını içerir.
+
+Adım 2: Boş bir maske dizisi oluştur. Bu dizide, son maskeyi saklayacağız.
+
+Adım 3: Her bir landmark grubu için işlem yap. Bu, yüzün farklı bölgelerini kapsayan farklı maskeleri oluşturmak anlamına gelir.
+
+Adım 4: Her bir grup içindeki landmark noktalarını al. Bu, her bir landmark grubunu oluşturan noktaların konumlarını içerir.
+
+Adım 5: Convex hull kullanarak landmark noktalarını saran çokgeni oluştur. Bu, landmark noktalarının en dış noktalarını birleştiren bir çizgidir.
+
+Adım 6: Convex hull içini doldurarak maskeyi oluştur. Bu, convex hull içinde kalan bölgeyi beyaz renk ile doldurarak maskeyi oluşturur.
+
+Adım 7: Yüz maskesini yumuşatmak için bir 'feather' uygula. Bu, maskeyi genişletmek ve daha yumuşak bir geçiş elde etmek için bir işlemdir.
+
+Adım 8: Maskeyi genişlet (dilate) ve ardından bir Gauss filtresi uygula (blur). Bu, maskeyi daha da yumuşatır ve son maskeyi elde ederiz.
+
 ```python
 def create_mask(points, shape, face_scale):
     # Landmark gruplarını tanımla
@@ -137,19 +152,4 @@ def create_mask(points, shape, face_scale):
 
     return mask_im
 ```
-Adım 1: Landmark gruplarını tanımla. Bu gruplar, yüzün belirli bölgelerini temsil eden landmark noktalarını içerir.
-
-Adım 2: Boş bir maske dizisi oluştur. Bu dizide, son maskeyi saklayacağız.
-
-Adım 3: Her bir landmark grubu için işlem yap. Bu, yüzün farklı bölgelerini kapsayan farklı maskeleri oluşturmak anlamına gelir.
-
-Adım 4: Her bir grup içindeki landmark noktalarını al. Bu, her bir landmark grubunu oluşturan noktaların konumlarını içerir.
-
-Adım 5: Convex hull kullanarak landmark noktalarını saran çokgeni oluştur. Bu, landmark noktalarının en dış noktalarını birleştiren bir çizgidir.
-
-Adım 6: Convex hull içini doldurarak maskeyi oluştur. Bu, convex hull içinde kalan bölgeyi beyaz renk ile doldurarak maskeyi oluşturur.
-
-Adım 7: Yüz maskesini yumuşatmak için bir 'feather' uygula. Bu, maskeyi genişletmek ve daha yumuşak bir geçiş elde etmek için bir işlemdir.
-
-Adım 8: Maskeyi genişlet (dilate) ve ardından bir Gauss filtresi uygula (blur). Bu, maskeyi daha da yumuşatır ve son maskeyi elde ederiz.
 
