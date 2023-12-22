@@ -33,6 +33,13 @@ Maske oluşturulduktan sonra dilate ve blur işlemleri, maskeyi daha iyi ayarlam
 Yüz ve vücut görüntülerine belirli bir bulanıklık uygulanarak yumuşatılır.
 Yumuşatılmış vücut görüntüsü ile orijinal yüz görüntüsü toplanır, aynı zamanda orijinal yüz görüntüsünden yumuşatılmış yüz görüntüsü çıkarılır. Bu işlem, renk uyumunu artırmaya yardımcı olur.
 
+#Örnek Çıktılar:
+![face_swap diagram (4)](https://github.com/mertefeyildiz/FaceSwap/assets/67926547/87566fd7-231e-4da1-91e6-4d75136991cf)
+![face_swap diagram (3)](https://github.com/mertefeyildiz/FaceSwap/assets/67926547/71822eea-3582-4672-a637-77faca5c8516)
+![face_swap diagram (2)](https://github.com/mertefeyildiz/FaceSwap/assets/67926547/ff5a4fee-05ca-4a18-9acb-8bc31b6fca5b)
+![face_swap diagram (1)](https://github.com/mertefeyildiz/FaceSwap/assets/67926547/bac861f3-4816-4600-8b9d-fdd0aa9dd495)
+
+
 <details>
 <summary>def get_landmarks</summary>
     
