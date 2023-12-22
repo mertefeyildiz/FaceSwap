@@ -102,7 +102,7 @@ Sonuç:
 
 Oluşturulan affine dönüşüm matrisi, [s * R | T] formülüne uyan bir matristir ve bu matris fonksiyon tarafından döndürülür.
 Bu adımlar, iki nokta kümesi arasındaki en iyi uyumu sağlayan bir affine dönüşüm matrisini oluşturmak için kullanılır.
-
+</details>
 <details>
 <summary>def create_mask</summary>
     
