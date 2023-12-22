@@ -5,7 +5,10 @@ face_detector fonksiyonu
 
 
 <br>
-
+<br>
+<br>
+<br>
+<br>
 Bu fonksiyon, bir görüntüden yüz tespiti yaparak tespit edilen yüzün 68 adet landmark (önemli nokta) koordinatlarını döndürmektedir. Bu işlem, Dlib kütüphanesinin yüz tespit ve landmark çıkarma yeteneklerini kullanır.
 
 İşte bu fonksiyonun adım adım açıklaması:
