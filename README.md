@@ -92,11 +92,11 @@ Döndürme Matrisi (R) Bulma:
     R = (U @ Vt).T # @ --> * 
 ```
 R, döndürme matrisidir ve SVD bileşenleri kullanılarak hesaplanır.
-İki matris çarpımından elde edilen çözüm aslında U * Vt matrisidir. Ancak, bu çözümün transpozu (T) alınmalıdır.
+İki matris çarpımından elde edilen çözüm aslında U * Vt matrisidir. Ancak, bu çözümün transpozu (T) alınmalıdır.<br>
 Affine Dönüşüm Matrisini Oluşturma:
 
 numpy.hstack kullanılarak R matrisi ve translasyon vektörü birleştirilir ve sonuç olarak affine dönüşüm matrisi elde edilir.
-Translasyon vektörü, (c2.T - (s2 / s1) * R @ c1.T)[:,None] ifadesi ile hesaplanır.
+Translasyon vektörü, (c2.T - (s2 / s1) * R @ c1.T)[:,None] ifadesi ile hesaplanır.<br>
 Sonuç:
 
 Oluşturulan affine dönüşüm matrisi, [s * R | T] formülüne uyan bir matristir ve bu matris fonksiyon tarafından döndürülür.
