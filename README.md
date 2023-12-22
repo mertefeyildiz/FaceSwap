@@ -63,8 +63,8 @@ if len(rects) == 0:
     raise Exception('Not Enough Faces')
 ```
 rects değişkeni, tespit edilen yüzlerin dikdörtgen bölgelerini içerir.
-Eğer tespit edilen yüz sayısı birden fazla ise (len(rects) > 1), bir hata fırlatılır ve "Too Many Faces" mesajı gösterilir.
-Eğer hiç yüz tespit edilemezse (len(rects) == 0), yine bir hata fırlatılır ve "Not Enough Faces" mesajı gösterilir.
+Eğer tespit edilen yüz sayısı birden fazla ise (len(rects) > 1), bir hata oluşur ve "Too Many Faces" mesajı gösterilir.
+Eğer hiç yüz tespit edilemezse (len(rects) == 0), yine bir hata oluşur ve "Not Enough Faces" mesajı gösterilir.
 
 ```python
 return numpy.array([[p.x, p.y] for p in PREDICTOR(im, rects[0]).parts()])
