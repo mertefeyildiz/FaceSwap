@@ -16,7 +16,7 @@ import sys
 
 
 DETECTOR = dlib.get_frontal_face_detector()
-PREDICTOR = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
+PREDICTOR = dlib.shape_predictor("model/shape_predictor_68_face_landmarks.dat")
 
 
 def get_landmarks(im):
